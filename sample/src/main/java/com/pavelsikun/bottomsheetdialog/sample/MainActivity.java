@@ -14,7 +14,9 @@ import com.pavelsikun.bottomsheetdialog.BottomSheetProgressDialog;
 import com.pavelsikun.bottomsheetdialog.BottomSheetStandardDialog;
 import com.pavelsikun.bottomsheetdialog.BottomSheetTextInputDialog;
 
-public class MainActivity extends AppCompatActivity implements BottomSheetChoiceDialog.OnItemSelectedListener<String> {
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements BottomSheetChoiceDialog.OnItemSelectedListener<String>, BottomSheetChoiceDialog.OnItemsSelectedListener<String> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +57,29 @@ public class MainActivity extends AppCompatActivity implements BottomSheetChoice
                 .show();
     }
 
+    public void multiChoiceDialog(View view) {
+
+        String[] items = new String[]{"Apple", "Banana", "Peach"};
+
+        new BottomSheetChoiceDialog(this)
+                .setItemsMultiChoice(items, this)
+                .setTopColor(ContextCompat.getColor(this, R.color.darkDeepOrange))
+                .setIcon(R.mipmap.ic_launcher)
+                .setIconTintColor(ContextCompat.getColor(this, R.color.white))
+                .setTitle("Choice dialog sample!")
+                .setTitleColor(ContextCompat.getColor(this, R.color.white))
+                .setMessage("Select fruits you like")
+                .setMessageColor(ContextCompat.getColor(this, R.color.white))
+                .show();
+    }
+
     public void customDialog(View view) {
         new BottomSheetCustomDialog(this)
                 .setIcon(R.mipmap.ic_launcher)
-                .setTitle("Yo!")
+                .setTitle("Indefinite progress dialog sample!")
+                .setTopColor(ContextCompat.getColor(this, R.color.colorAccent))
+                .setIconTintColor(ContextCompat.getColor(this, R.color.white))
                 .setTitleColor(ContextCompat.getColor(this, R.color.white))
-                .setTopColor(Color.MAGENTA)
-                .setMessage("Testing this shit out!")
-                .setMessageColor(ContextCompat.getColor(this, R.color.white))
                 .show();
     }
 
@@ -79,23 +96,48 @@ public class MainActivity extends AppCompatActivity implements BottomSheetChoice
     public void standardDialog(View view) {
         new BottomSheetStandardDialog(this)
                 .setIcon(R.mipmap.ic_launcher)
-                .setTitle("Yo!")
-                .setTopColor(Color.MAGENTA)
-                .setMessage("Testing this shit out!")
+                .setTitle("Standard dialog!")
+                .setTopColor(ContextCompat.getColor(this, R.color.darkGreen))
+                .setIconTintColor(ContextCompat.getColor(this, R.color.white))
+                .setTitleColor(ContextCompat.getColor(this, R.color.white))
+                .setPositiveButton("Yes!", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                })
+                .setNegativeButton("No!", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                })
+                .setNeutralButton("Tell me more", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                })
                 .show();
     }
 
     public void textDialog(View view) {
         new BottomSheetTextInputDialog(this)
                 .setIcon(R.mipmap.ic_launcher)
-                .setTitle("Yo!")
-                .setTopColor(Color.MAGENTA)
-                .setMessage("Testing this shit out!")
+                .setTitle("Indefinite progress dialog sample!")
+                .setTopColor(ContextCompat.getColor(this, R.color.colorAccent))
+                .setIconTintColor(ContextCompat.getColor(this, R.color.white))
+                .setTitleColor(ContextCompat.getColor(this, R.color.white))
                 .show();
     }
 
     @Override
     public void onItemSelected(int position, String item) {
         Toast.makeText(this, "selected item #" + position + " value = " + item, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onItemsSelected(List<Integer> positions, List<String> items) {
+        Toast.makeText(this, "selected items: " + items, Toast.LENGTH_LONG).show();
     }
 }

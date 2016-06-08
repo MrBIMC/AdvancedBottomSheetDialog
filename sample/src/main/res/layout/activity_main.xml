@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -19,10 +18,15 @@
             android:layout_height="wrap_content"
             android:onClick="infoDialog"/>
         <Button
-            android:text="Choice Dialog"
+            android:text="SingleChoice Dialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="choiceDialog"/>
+        <Button
+            android:text="MultiChoice Dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="multiChoiceDialog"/>
         <Button
             android:text="Custom Dialog"
             android:layout_width="match_parent"
