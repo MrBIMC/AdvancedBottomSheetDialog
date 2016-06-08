@@ -13,6 +13,7 @@
         android:layout_centerVertical="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/ld_side_margin"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:contentDescription="@null"/>
@@ -20,24 +21,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="24dp"
         android:layout_toRightOf="@id/ld_icon"
         android:layout_toEndOf="@id/ld_icon"
         android:layout_centerVertical="true"
         android:orientation="vertical">
+
         <TextView
-            android:id="@+id/ld_top_title"
+            android:id="@id/ld_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="?android:textColorPrimary"
             android:textSize="18sp"
+            android:textStyle="bold"
             android:visibility="gone" />
+
         <TextView
             android:id="@id/ld_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
+            android:textColor="?android:textColorSecondary"
             android:textSize="16sp"
             android:visibility="gone" />
+
     </LinearLayout>
 
 </RelativeLayout>

@@ -29,12 +29,10 @@ public abstract class AbsBottomSheetDialog<T extends AbsBottomSheetDialog> {
 
     private View dialogView;
     private ImageView iconView;
-
-    private TextView topTitleView;
     private TextView titleView;
     private TextView messageView;
 
-    BottomSheetDialogFragmentDelegate dialog;
+    private BottomSheetDialogFragmentDelegate dialog;
 
     private Context context;
 
@@ -48,7 +46,6 @@ public abstract class AbsBottomSheetDialog<T extends AbsBottomSheetDialog> {
         iconView = findView(R.id.ld_icon);
         titleView = findView(R.id.ld_title);
         messageView = findView(R.id.ld_message);
-        topTitleView = findView(R.id.ld_top_title);
     }
 
     @LayoutRes
@@ -69,24 +66,9 @@ public abstract class AbsBottomSheetDialog<T extends AbsBottomSheetDialog> {
         return setTitle(string(title));
     }
 
-    public T setTopTitle(@StringRes int title) {
-        return setTopTitle(string(title));
-    }
-
     public T setTitle(CharSequence title) {
         titleView.setVisibility(View.VISIBLE);
         titleView.setText(title);
-        return (T) this;
-    }
-
-    public T setTopTitle(CharSequence title) {
-        topTitleView.setVisibility(View.VISIBLE);
-        topTitleView.setText(title);
-        return (T) this;
-    }
-
-    public T setTopTitleColor(int color) {
-        topTitleView.setTextColor(color);
         return (T) this;
     }
 
@@ -111,6 +93,18 @@ public abstract class AbsBottomSheetDialog<T extends AbsBottomSheetDialog> {
     @TargetApi(Build.VERSION_CODES.FROYO)
     public T setIconTintColor(int iconTintColor) {
         iconView.setColorFilter(iconTintColor);
+        return (T) this;
+    }
+
+    @TargetApi(Build.VERSION_CODES.FROYO)
+    public T setTitleColor(int titleColor) {
+        titleView.setTextColor(titleColor);
+        return (T) this;
+    }
+
+    @TargetApi(Build.VERSION_CODES.FROYO)
+    public T setMessageColor(int messageColor) {
+        messageView.setTextColor(messageColor);
         return (T) this;
     }
 
@@ -160,12 +154,12 @@ public abstract class AbsBottomSheetDialog<T extends AbsBottomSheetDialog> {
         return (T) this;
     }
 
-    public Fragment show() {
+    public BottomSheetDialogFragmentDelegate show() {
         dialog.show(((AppCompatActivity) context).getSupportFragmentManager(), dialog.getTag());
         return dialog;
     }
 
-    public Fragment create() {
+    public BottomSheetDialogFragmentDelegate create() {
         return dialog;
     }
 

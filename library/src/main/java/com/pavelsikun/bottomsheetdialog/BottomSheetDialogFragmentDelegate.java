@@ -1,10 +1,12 @@
 package com.pavelsikun.bottomsheetdialog;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.SwipeDismissBehavior;
 import android.util.Log;
 import android.view.View;
 
@@ -13,6 +15,8 @@ import android.view.View;
  */
 
 public class BottomSheetDialogFragmentDelegate extends BottomSheetDialogFragment {
+
+    private DialogInterface.OnDismissListener dismissListener;
 
     private BottomSheetBehavior.BottomSheetCallback bottomSheetCallback = new BottomSheetBehavior.BottomSheetCallback() {
         @Override
@@ -27,6 +31,14 @@ public class BottomSheetDialogFragmentDelegate extends BottomSheetDialogFragment
 
         }
     };
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+        if(dismissListener != null) {
+            dismissListener.onDismiss(dialog);
+        }
+    }
 
     private View contentView;
 
@@ -50,5 +62,9 @@ public class BottomSheetDialogFragmentDelegate extends BottomSheetDialogFragment
             b.setState(BottomSheetBehavior.STATE_EXPANDED);
             b.setBottomSheetCallback(bottomSheetCallback);
         }
+    }
+
+    public void setOnDismissListener(DialogInterface.OnDismissListener dismissListener) {
+        this.dismissListener = dismissListener;
     }
 }
