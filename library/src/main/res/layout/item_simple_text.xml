@@ -5,6 +5,6 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:minHeight="?attr/listPreferredItemHeightSmall"
-    android:paddingLeft="@dimen/ld_side_margin"
-    android:paddingRight="@dimen/ld_side_margin"
+    android:paddingLeft="@dimen/bsd_side_margin"
+    android:paddingRight="@dimen/bsd_side_margin"
     android:textAppearance="?attr/textAppearanceListItemSmall" />

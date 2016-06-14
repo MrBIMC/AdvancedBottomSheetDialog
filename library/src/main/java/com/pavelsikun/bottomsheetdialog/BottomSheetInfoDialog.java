@@ -41,14 +41,14 @@ public class BottomSheetInfoDialog extends AbsBottomSheetDialog<BottomSheetInfoD
     }
 
     @Override
-    public BottomSheetDialogFragmentDelegate show() {
+    public BottomSheetInfoDialog show() {
         if (infoDialogId == -1) {
             return super.show();
         }
 
         boolean shouldShowDialog = !storage(getContext()).getBoolean(String.valueOf(infoDialogId), false);
         if (shouldShowDialog) {
-            BottomSheetDialogFragmentDelegate dialog = super.create();
+            BottomSheetDialogFragmentDelegate dialog = super.create().getDialogDelegate();
             dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                 @Override
                 public void onDismiss(DialogInterface dialog) {

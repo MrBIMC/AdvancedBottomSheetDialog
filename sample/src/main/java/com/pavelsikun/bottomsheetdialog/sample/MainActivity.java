@@ -1,6 +1,5 @@
 package com.pavelsikun.bottomsheetdialog.sample;
 
-import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -84,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements BottomSheetChoice
     }
 
     public void progressDialog(View view) {
+//        BottomSheetProgressDialog d =
         new BottomSheetProgressDialog(this)
                 .setIcon(R.mipmap.ic_launcher)
                 .setTitle("Indefinite progress dialog sample!")

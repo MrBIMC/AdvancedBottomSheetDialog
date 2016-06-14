@@ -4,7 +4,6 @@ package com.pavelsikun.bottomsheetdialog;
  * Created by Pavel Sikun on 08.06.16.
  */
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.util.SparseBooleanArray;
@@ -22,7 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by yarolegovich on 16.04.2016.
+ * Created by Pavel Sikun on 07.06.16.
  */
 public class BottomSheetChoiceDialog extends AbsBottomSheetDialog<BottomSheetChoiceDialog> {
 
@@ -97,11 +96,6 @@ public class BottomSheetChoiceDialog extends AbsBottomSheetDialog<BottomSheetCho
         }
 
         return this;
-    }
-
-    @Override
-    public BottomSheetDialogFragmentDelegate show() {
-        return super.show();
     }
 
     public BottomSheetChoiceDialog setConfirmButtonText(@StringRes int text) {

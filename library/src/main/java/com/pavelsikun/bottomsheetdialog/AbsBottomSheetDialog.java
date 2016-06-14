@@ -11,7 +11,6 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -25,7 +24,7 @@ import android.widget.TextView;
 @SuppressWarnings("unchecked")
 public abstract class AbsBottomSheetDialog<T extends AbsBottomSheetDialog> {
 
-    private static final String KEY_SAVED_STATE_TOKEN = "absd_saved_state_token";
+    private static final String KEY_SAVED_STATE_TOKEN = "bsd_saved_state_token";
 
     private View dialogView;
     private ImageView iconView;
@@ -43,9 +42,9 @@ public abstract class AbsBottomSheetDialog<T extends AbsBottomSheetDialog> {
         dialog = new BottomSheetDialogFragmentDelegate();
         dialog.setView(dialogView);
 
-        iconView = findView(R.id.ld_icon);
-        titleView = findView(R.id.ld_title);
-        messageView = findView(R.id.ld_message);
+        iconView = findView(R.id.bsd_icon);
+        titleView = findView(R.id.bsd_title);
+        messageView = findView(R.id.bsd_message);
     }
 
     @LayoutRes
@@ -119,7 +118,7 @@ public abstract class AbsBottomSheetDialog<T extends AbsBottomSheetDialog> {
     }
 
     public T setTopColor(@ColorInt int topColor) {
-        findView(R.id.ld_color_area).setBackgroundColor(topColor);
+        findView(R.id.bsd_color_area).setBackgroundColor(topColor);
         return (T) this;
     }
 
@@ -154,12 +153,16 @@ public abstract class AbsBottomSheetDialog<T extends AbsBottomSheetDialog> {
         return (T) this;
     }
 
-    public BottomSheetDialogFragmentDelegate show() {
+    public T show() {
         dialog.show(((AppCompatActivity) context).getSupportFragmentManager(), dialog.getTag());
-        return dialog;
+        return (T) this;
     }
 
-    public BottomSheetDialogFragmentDelegate create() {
+    public T create() {
+        return (T) this;
+    }
+
+    protected BottomSheetDialogFragmentDelegate getDialogDelegate() {
         return dialog;
     }
 

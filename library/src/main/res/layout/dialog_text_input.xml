@@ -42,9 +42,9 @@
                 android:id="@+id/ld_error_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/ld_side_margin"
-                android:layout_marginRight="@dimen/ld_side_margin"
-                android:textColor="@color/ld_textInputError"
+                android:layout_marginLeft="@dimen/bsd_side_margin"
+                android:layout_marginRight="@dimen/bsd_side_margin"
+                android:textColor="@color/bsd_textInputError"
                 android:visibility="gone" />
 
         </LinearLayout>

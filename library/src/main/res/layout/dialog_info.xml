@@ -10,7 +10,7 @@
         android:id="@+id/ld_cb_dont_show_again"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/ld_side_cb_margin"
+        android:layout_margin="@dimen/bsd_side_cb_margin"
         android:text="@string/dont_show_again"
         android:visibility="gone" />
 
