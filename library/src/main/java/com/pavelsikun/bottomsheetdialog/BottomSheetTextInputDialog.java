@@ -29,9 +29,9 @@ public class BottomSheetTextInputDialog extends AbsBottomSheetDialog<BottomSheet
     }
 
     {
-        confirmButton = findView(R.id.ld_btn_confirm);
-        inputField = findView(R.id.ld_text_input);
-        errorMessage = findView(R.id.ld_error_message);
+        confirmButton = findView(R.id.bsd_btn_confirm);
+        inputField = findView(R.id.bsd_text_input);
+        errorMessage = findView(R.id.bsd_error_message);
         inputField.addTextChangedListener(new HideErrorOnTextChanged());
     }
 

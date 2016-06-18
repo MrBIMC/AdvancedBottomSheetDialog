@@ -22,13 +22,13 @@ public class BottomSheetCustomDialog extends AbsBottomSheetDialog<BottomSheetCus
 
     public BottomSheetCustomDialog setView(@LayoutRes int layout) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        ViewGroup parent = findView(R.id.ld_custom_view_container);
+        ViewGroup parent = findView(R.id.bsd_custom_view_container);
         addedView = inflater.inflate(layout, parent, true);
         return this;
     }
 
     public BottomSheetCustomDialog setView(View customView) {
-        ViewGroup container = findView(R.id.ld_custom_view_container);
+        ViewGroup container = findView(R.id.bsd_custom_view_container);
         container.addView(customView);
         addedView = customView;
         return this;

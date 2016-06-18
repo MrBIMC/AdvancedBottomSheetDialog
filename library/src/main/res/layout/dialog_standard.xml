@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/ld_btn_neutral"
+            android:id="@+id/bsd_btn_neutral"
             style="?attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
             android:layout_marginBottom="16dp"/>
 
         <Button
-            android:id="@+id/ld_btn_no"
+            android:id="@+id/bsd_btn_no"
             style="?attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
             android:visibility="gone" />
 
         <Button
-            android:id="@+id/ld_btn_yes"
+            android:id="@+id/bsd_btn_yes"
             style="?attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

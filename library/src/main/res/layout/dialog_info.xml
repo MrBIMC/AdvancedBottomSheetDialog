@@ -7,7 +7,7 @@
     <include layout="@layout/view_color_area" />
 
     <CheckBox
-        android:id="@+id/ld_cb_dont_show_again"
+        android:id="@+id/bsd_cb_dont_show_again"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/bsd_side_cb_margin"

@@ -4,11 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.StringRes;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 
 /**
@@ -30,7 +26,7 @@ public class BottomSheetInfoDialog extends AbsBottomSheetDialog<BottomSheetInfoD
     }
 
     {
-        cbDontShowAgain = findView(R.id.ld_cb_dont_show_again);
+        cbDontShowAgain = findView(R.id.bsd_cb_dont_show_again);
         infoDialogId = -1;
     }
 

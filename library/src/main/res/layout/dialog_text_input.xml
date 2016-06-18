@@ -14,7 +14,7 @@
         android:layout_marginBottom="12dp">
 
         <TextView
-            android:id="@+id/ld_btn_confirm"
+            android:id="@+id/bsd_btn_confirm"
             style="@style/DialogButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,13 +24,13 @@
             android:text="@android:string/ok"/>
 
         <LinearLayout
-            android:layout_toLeftOf="@id/ld_btn_confirm"
+            android:layout_toLeftOf="@id/bsd_btn_confirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/ld_text_input"
+                android:id="@+id/bsd_text_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="18dp"
@@ -39,7 +39,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/ld_error_message"
+                android:id="@+id/bsd_error_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/bsd_side_margin"

@@ -7,7 +7,7 @@
     <include layout="@layout/view_color_area" />
 
     <ListView
-        android:id="@+id/ld_choices"
+        android:id="@+id/bsd_choices"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@null"

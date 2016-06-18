@@ -17,7 +17,7 @@ public class BottomSheetProgressDialog extends AbsBottomSheetDialog<BottomSheetP
 
     {
         setCancelable(false); //todo: it doesn't work!
-        progressBar = findView(R.id.progressbar);
+        progressBar = findView(R.id.bsd_progressbar);
     }
 
     @Override
@@ -26,6 +26,7 @@ public class BottomSheetProgressDialog extends AbsBottomSheetDialog<BottomSheetP
     }
 
     public BottomSheetProgressDialog setProgress(int progress) {
+        progressBar.setIndeterminate(false);
         progressBar.setProgress(progress);
         return this;
     }

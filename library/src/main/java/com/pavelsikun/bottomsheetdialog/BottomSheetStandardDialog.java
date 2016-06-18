@@ -16,10 +16,6 @@ import static android.view.View.VISIBLE;
 
 public class BottomSheetStandardDialog extends AbsBottomSheetDialog<BottomSheetStandardDialog> {
 
-    public static final int POSITIVE_BUTTON = R.id.ld_btn_yes;
-    public static final int NEGATIVE_BUTTON = R.id.ld_btn_no;
-    public static final int NEUTRAL_BUTTON = R.id.ld_btn_neutral;
-
     private Button positiveButton;
     private Button negativeButton;
     private Button neutralButton;
@@ -29,9 +25,9 @@ public class BottomSheetStandardDialog extends AbsBottomSheetDialog<BottomSheetS
     }
 
     {
-        positiveButton = findView(R.id.ld_btn_yes);
-        negativeButton = findView(R.id.ld_btn_no);
-        neutralButton = findView(R.id.ld_btn_neutral);
+        positiveButton = findView(R.id.bsd_btn_yes);
+        negativeButton = findView(R.id.bsd_btn_no);
+        neutralButton = findView(R.id.bsd_btn_neutral);
     }
 
     public BottomSheetStandardDialog setPositiveButton(@StringRes int text, View.OnClickListener listener) {

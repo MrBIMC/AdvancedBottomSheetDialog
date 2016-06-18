@@ -79,18 +79,20 @@ public class MainActivity extends AppCompatActivity implements BottomSheetChoice
                 .setTopColor(ContextCompat.getColor(this, R.color.colorAccent))
                 .setIconTintColor(ContextCompat.getColor(this, R.color.white))
                 .setTitleColor(ContextCompat.getColor(this, R.color.white))
+                .setView(R.layout.custom_view_demo)
                 .show();
     }
 
     public void progressDialog(View view) {
-//        BottomSheetProgressDialog d =
-        new BottomSheetProgressDialog(this)
+        BottomSheetProgressDialog d = new BottomSheetProgressDialog(this)
                 .setIcon(R.mipmap.ic_launcher)
                 .setTitle("Indefinite progress dialog sample!")
                 .setTopColor(ContextCompat.getColor(this, R.color.colorAccent))
                 .setIconTintColor(ContextCompat.getColor(this, R.color.white))
                 .setTitleColor(ContextCompat.getColor(this, R.color.white))
                 .show();
+
+        //d.setProgress(50); <- or set progress if you don't want intermediate progressbar
     }
 
     public void standardDialog(View view) {

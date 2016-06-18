@@ -35,7 +35,7 @@ public class BottomSheetChoiceDialog extends AbsBottomSheetDialog<BottomSheetCho
     }
 
     {
-        choicesList = findView(R.id.ld_choices);
+        choicesList = findView(R.id.bsd_choices);
     }
 
     public <T> BottomSheetChoiceDialog setItems(T[] items, OnItemSelectedListener<T> itemSelectedListener) {
@@ -81,11 +81,11 @@ public class BottomSheetChoiceDialog extends AbsBottomSheetDialog<BottomSheetCho
     public <T> BottomSheetChoiceDialog setItemsMultiChoice(ArrayAdapter<T> adapter, boolean[] selectionState, OnItemsSelectedListener<T> itemsSelectedListener) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View confirmBtnContainer = inflater.inflate(R.layout.item_footer_confirm, null);
-        confirmButton = (TextView) confirmBtnContainer.findViewById(R.id.ld_btn_confirm);
+        confirmButton = (TextView) confirmBtnContainer.findViewById(R.id.bsd_btn_confirm);
         confirmButton.setOnClickListener(new ItemsSelectedAdapter<>(itemsSelectedListener));
         choicesList.addFooterView(confirmBtnContainer);
 
-        ListView choicesList = findView(R.id.ld_choices);
+        ListView choicesList = findView(R.id.bsd_choices);
         choicesList.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
         choicesList.setAdapter(adapter);
 
