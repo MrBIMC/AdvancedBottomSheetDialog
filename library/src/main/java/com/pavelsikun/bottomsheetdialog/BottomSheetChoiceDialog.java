@@ -1,8 +1,5 @@
 package com.pavelsikun.bottomsheetdialog;
 
-/**
- * Created by Pavel Sikun on 08.06.16.
- */
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
@@ -131,20 +128,6 @@ public class BottomSheetChoiceDialog extends AbsBottomSheetDialog<BottomSheetCho
                 }
             }
             outState.putBooleanArray(KEY_ITEM_CHECKED_STATES, checkedStates);
-        }
-    }
-
-    @Override
-    void restoreState(Bundle savedState) {
-        super.restoreState(savedState);
-        if (isMultiChoiceList()) {
-            boolean[] checkedStates = savedState.getBooleanArray(KEY_ITEM_CHECKED_STATES);
-            if (checkedStates == null) {
-                return;
-            }
-            for (int index = 0; index < checkedStates.length; index++) {
-                choicesList.setItemChecked(index, checkedStates[index]);
-            }
         }
     }
 

@@ -1,5 +1,6 @@
 package com.pavelsikun.bottomsheetdialog.sample;
 
+import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,15 +16,68 @@ import com.pavelsikun.bottomsheetdialog.BottomSheetTextInputDialog;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements BottomSheetChoiceDialog.OnItemSelectedListener<String>, BottomSheetChoiceDialog.OnItemsSelectedListener<String> {
+public class MainActivity extends AppCompatActivity implements
+        BottomSheetChoiceDialog.OnItemSelectedListener<String>,
+        BottomSheetChoiceDialog.OnItemsSelectedListener<String>,
+        View.OnClickListener {
+
+    //This can be anything that identifies a dialog
+    private static final int ID_CUSTOM_DIALOG = R.id.dialog_custom_view;
+    private static final int ID_STANDARD_DIALOG = R.id.dialog_standard;
+    private static final int ID_SINGLE_CHOICE_DIALOG = R.id.dialog_single_choice;
+    private static final int ID_INFO_DIALOG = R.id.dialog_info;
+    private static final int ID_MULTI_CHOICE_DIALOG = R.id.dialog_multi_choice;
+    private static final int ID_TEXT_INPUT_DIALOG = R.id.dialog_text_input;
+    private static final int ID_PROGRESS_DIALOG = R.id.dialog_progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        findViewById(ID_CUSTOM_DIALOG).setOnClickListener(this);
+        findViewById(ID_INFO_DIALOG).setOnClickListener(this);
+        findViewById(ID_MULTI_CHOICE_DIALOG).setOnClickListener(this);
+        findViewById(ID_PROGRESS_DIALOG).setOnClickListener(this);
+        findViewById(ID_SINGLE_CHOICE_DIALOG).setOnClickListener(this);
+        findViewById(ID_STANDARD_DIALOG).setOnClickListener(this);
+        findViewById(ID_TEXT_INPUT_DIALOG).setOnClickListener(this);
     }
 
-    public void infoDialog(View view) {
+    @Override
+    public void onClick(View v) {
+        displayDialog(v.getId(), null);
+    }
+
+    private void displayDialog(int id, Bundle savedInstanceState) {
+        Toast.makeText(this, "showing dialog!", Toast.LENGTH_SHORT).show();
+
+        switch (id) {
+            case ID_CUSTOM_DIALOG:
+                customDialog();
+                break;
+            case ID_INFO_DIALOG:
+                infoDialog();
+                break;
+            case ID_MULTI_CHOICE_DIALOG:
+                multiChoiceDialog();
+                break;
+            case ID_PROGRESS_DIALOG:
+                progressDialog();
+                break;
+            case ID_SINGLE_CHOICE_DIALOG:
+                choiceDialog();
+                break;
+            case ID_STANDARD_DIALOG:
+                standardDialog();
+                break;
+            case ID_TEXT_INPUT_DIALOG:
+                textDialog();
+                break;
+        }
+    }
+
+    public void infoDialog() {
 
         BottomSheetInfoDialog dialog = new BottomSheetInfoDialog(this)
                 .setIcon(R.mipmap.ic_launcher)
@@ -40,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements BottomSheetChoice
         dialog.show();
     }
 
-    public void choiceDialog(View view) {
+    public void choiceDialog() {
 
         String[] items = new String[]{"Apple", "Banana", "Peach"};
 
@@ -56,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements BottomSheetChoice
                 .show();
     }
 
-    public void multiChoiceDialog(View view) {
+    public void multiChoiceDialog() {
 
         String[] items = new String[]{"Apple", "Banana", "Peach"};
 
@@ -72,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements BottomSheetChoice
                 .show();
     }
 
-    public void customDialog(View view) {
+    public void customDialog() {
         new BottomSheetCustomDialog(this)
                 .setIcon(R.mipmap.ic_launcher)
                 .setTitle("Indefinite progress dialog sample!")
@@ -83,19 +137,50 @@ public class MainActivity extends AppCompatActivity implements BottomSheetChoice
                 .show();
     }
 
-    public void progressDialog(View view) {
-        BottomSheetProgressDialog d = new BottomSheetProgressDialog(this)
+    public void progressDialog() {
+        final BottomSheetProgressDialog d = new BottomSheetProgressDialog(this)
                 .setIcon(R.mipmap.ic_launcher)
-                .setTitle("Indefinite progress dialog sample!")
+                .setTitle("Progress dialog sample!")
                 .setTopColor(ContextCompat.getColor(this, R.color.colorAccent))
                 .setIconTintColor(ContextCompat.getColor(this, R.color.white))
                 .setTitleColor(ContextCompat.getColor(this, R.color.white))
+                .setProgress(0)
+                .setMaxProgress(100)
                 .show();
 
-        //d.setProgress(50); <- or set progress if you don't want intermediate progressbar
+//        d.setIndeterminate(true)  <- if you don't want to track progress
+
+            new AsyncTask<Void, Integer, Long>() {
+
+                @Override
+                protected Long doInBackground(Void... voids) {
+                    for(int i = 0; i < 100; i++) {
+                        try {
+                            Thread.sleep(50);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        publishProgress(i);
+                    }
+                    return null;
+                }
+
+                @Override
+                protected void onPostExecute(Long aLong) {
+                    d.dismiss();
+                    super.onPostExecute(aLong);
+                }
+
+                @Override
+                protected void onProgressUpdate(Integer... values) {
+                    d.setProgress(values[0]);
+                    super.onProgressUpdate(values);
+                }
+
+            }.execute();
     }
 
-    public void standardDialog(View view) {
+    public void standardDialog() {
         new BottomSheetStandardDialog(this)
                 .setIcon(R.mipmap.ic_launcher)
                 .setTitle("Standard dialog!")
@@ -123,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements BottomSheetChoice
                 .show();
     }
 
-    public void textDialog(View view) {
+    public void textDialog() {
         new BottomSheetTextInputDialog(this)
                 .setIcon(R.mipmap.ic_launcher)
                 .setTitle("Indefinite progress dialog sample!")

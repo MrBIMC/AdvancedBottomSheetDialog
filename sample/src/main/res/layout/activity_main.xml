@@ -13,39 +13,39 @@
         android:orientation="vertical"
         android:layout_centerInParent="true">
         <Button
+            android:id="@+id/dialog_info"
             android:text="Info Dialog"
             android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:onClick="infoDialog"/>
+            android:layout_height="wrap_content"/>
         <Button
+            android:id="@+id/dialog_single_choice"
             android:text="SingleChoice Dialog"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="choiceDialog"/>
+            android:layout_height="wrap_content"/>
         <Button
+            android:id="@+id/dialog_multi_choice"
             android:text="MultiChoice Dialog"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="multiChoiceDialog"/>
+            android:layout_height="wrap_content"/>
         <Button
+            android:id="@+id/dialog_custom_view"
             android:text="Custom Dialog"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="customDialog"/>
+            android:layout_height="wrap_content"/>
         <Button
+            android:id="@+id/dialog_progress"
             android:text="Progress Dialog"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="progressDialog"/>
+            android:layout_height="wrap_content"/>
         <Button
+            android:id="@+id/dialog_standard"
             android:text="Standard Dialog"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="standardDialog"/>
+            android:layout_height="wrap_content"/>
         <Button
+            android:id="@+id/dialog_text_input"
             android:text="TextInput Dialog"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="textDialog"/>
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </RelativeLayout>

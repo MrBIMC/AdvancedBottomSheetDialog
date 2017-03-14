@@ -126,30 +126,9 @@ public abstract class AbsBottomSheetDialog<T extends AbsBottomSheetDialog> {
         return setTopColor(color(topColoRes));
     }
 
-    /*
-     * You should call method saveInstanceState on handler object and then use saved info to restore
-     * your dialog in onRestoreInstanceState. Static methods wasDialogOnScreen and getDialogId will
-     * help you in this.
-     */
-    public T setInstanceStateHandler(int id, SaveStateHandler handler) {
-        handler.handleDialogStateSave(id, this);
-        return (T) this;
-    }
 
     public T setCancelable(boolean cancelable) {
         dialog.setCancelable(cancelable);
-        return (T) this;
-    }
-
-    public T setSavedInstanceState(Bundle savedInstanceState) {
-        if (savedInstanceState != null) {
-            boolean hasSavedStateHere =
-                    savedInstanceState.keySet().contains(KEY_SAVED_STATE_TOKEN) &&
-                            savedInstanceState.getSerializable(KEY_SAVED_STATE_TOKEN) == getClass();
-            if (hasSavedStateHere) {
-                restoreState(savedInstanceState);
-            }
-        }
         return (T) this;
     }
 
@@ -172,9 +151,6 @@ public abstract class AbsBottomSheetDialog<T extends AbsBottomSheetDialog> {
 
     void onSaveInstanceState(Bundle outState) {
         outState.putSerializable(KEY_SAVED_STATE_TOKEN, getClass());
-    }
-
-    void restoreState(Bundle savedState) {
     }
 
     boolean isShowing() {

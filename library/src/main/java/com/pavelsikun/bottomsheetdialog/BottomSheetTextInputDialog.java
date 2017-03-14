@@ -109,15 +109,6 @@ public class BottomSheetTextInputDialog extends AbsBottomSheetDialog<BottomSheet
     }
 
     @Override
-    void restoreState(Bundle savedState) {
-        super.restoreState(savedState);
-        if (savedState.getBoolean(KEY_HAS_ERROR, false)) {
-            setError();
-        }
-        inputField.setText(savedState.getString(KEY_TYPED_TEXT));
-    }
-
-    @Override
     protected int getLayout() {
         return R.layout.dialog_text_input;
     }

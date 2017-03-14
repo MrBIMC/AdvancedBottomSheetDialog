@@ -2,11 +2,13 @@ package com.pavelsikun.bottomsheetdialog;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.CoordinatorLayout;
 import android.view.View;
+import android.view.ViewGroup;
 
 /**
  * Created by Pavel Sikun on 07.06.16.
@@ -48,6 +50,15 @@ public class BottomSheetDialogFragmentDelegate extends BottomSheetDialogFragment
     public void setupDialog(Dialog dialog, int style) {
         super.setupDialog(dialog, style);
 
+        setRetainInstance(true);
+
+        try {
+            ((ViewGroup) contentView.getParent()).removeView(contentView);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
         dialog.setContentView(contentView);
 
         CoordinatorLayout.LayoutParams layoutParams =
@@ -60,6 +71,14 @@ public class BottomSheetDialogFragmentDelegate extends BottomSheetDialogFragment
             b.setState(BottomSheetBehavior.STATE_EXPANDED);
             b.setBottomSheetCallback(bottomSheetCallback);
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (getDialog() != null && getRetainInstance()) {
+            getDialog().setDismissMessage(null);
+        }
+        super.onDestroyView();
     }
 
     public void setOnDismissListener(DialogInterface.OnDismissListener dismissListener) {

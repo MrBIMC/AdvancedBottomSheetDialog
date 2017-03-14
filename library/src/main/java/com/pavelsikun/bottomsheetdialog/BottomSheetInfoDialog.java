@@ -15,8 +15,6 @@ public class BottomSheetInfoDialog extends AbsBottomSheetDialog<BottomSheetInfoD
 
     private static final String STORAGE = "ld_dont_show";
 
-    private static final String KEY_DONT_SHOW_AGAIN = "key_dont_show_again";
-
     private CheckBox cbDontShowAgain;
 
     private int infoDialogId;
@@ -57,18 +55,6 @@ public class BottomSheetInfoDialog extends AbsBottomSheetDialog<BottomSheetInfoD
         } else {
             return super.create();
         }
-    }
-
-    @Override
-    void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putBoolean(KEY_DONT_SHOW_AGAIN, cbDontShowAgain.isChecked());
-    }
-
-    @Override
-    void restoreState(Bundle savedState) {
-        super.restoreState(savedState);
-        cbDontShowAgain.setChecked(savedState.getBoolean(KEY_DONT_SHOW_AGAIN));
     }
 
     @Override
